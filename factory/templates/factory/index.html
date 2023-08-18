@@ -1,0 +1,155 @@
+{%extends 'factory/base.html'%}
+{%load static%}
+{%block home%}active{%endblock%} 
+{%block content%}
+      <!-- HERO SLIDER SECTION-->
+      <section class="text-white bg-cover bg-center primary-overlay overlay-dense" style="background: url('img/photogrid.jpg') repeat">
+        <div class="overlay-content py-5">
+          <div class="container py-4">
+            <!--
+            *** JUMBOTRON ***
+            _________________________________________________________
+            -->
+            <div class="container">
+              <div class="row mb-4">
+                <div class="col-md-12 text-center">
+                  <h1 class="text-uppercase">One District One Factory Initiative</h1>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-md-6 mb-4 justify-content-center"><img class="img-fluid" src="{% static 'img/cote.png'%}" alt="..."></div>
+                <div class="col-md-6 text-center">
+                  <p class="lead h3 text-uppercase fw-bold lh-base">A flagship program of His Excellency Nana Addo Danquah Akuffo Addo.</p>
+                  <p class="lead h3 fw-normal lh-base mb-3">This site contains all you need to know about the one district one factory initiative</p>
+                  <p><a class="btn btn-outline-light" href="{%url 'factories'%}">View Factories</a></p>
+                </div>
+              </div>
+            </div>
+            <!-- *** JUMBOTRON END ***-->
+          </div>
+        </div>
+      </section>
+      <!-- BLOCK SECTION-->
+      <section class="py-5 bg-gray-200">
+        <div class="container">
+          <div class="row gy-4 align-items-center">
+            <div class="col-md-6 text-center">
+              <h2 class="text-uppercase">Everything you need to know</h2>
+              <p class="lead mb-3">Over 120 factories built</p>
+              <p class="mb-3">We have collected literally <strong>everything you would possibly need to know about the 1D1F initiative.</strong>. It includes details about each factory.</p>
+              <p><a class="btn btn-primary" href="{%url 'districts' %}">Track progress</a></p>
+            </div>
+            <div class="col-md-6"><img class="img-fluid d-block mx-auto" src="{% static 'img/factory.jpg'%}" alt="..."></div>
+          </div>
+        </div>
+      </section>
+      <!-- BLOCK SECTION-->
+      <section class="py-5 bg-primary text-white">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6"><img class="img-fluid d-block mx-auto" src="{% static 'img/crops.jpg'%}" alt="..."></div>
+            <div class="col-md-6 text-center">
+              <h2 class="text-uppercase">Agric Factories</h2>
+              <p class="lead mb-3">Eat Ghana Agenda</p>
+              <p class="mb-3">One of the goals of the 1D1F was to cut the cost of importation buy empowering Ghanaians to grow what they eat.</p>
+              <p><a class="btn btn-outline-light" href="{%url 'filter' 'agric'%}">View Agric Factories</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-5">
+        <div class="container py-4">
+          <div class="row gy-4">
+     
+            <!-- Service-->
+            <div class="col-lg-4 col-md-6 block-icon-hover text-center">
+              <div class="icon icon-outlined icon-outlined-primary icon-thin mx-auto mb-3"><i class="fas fa-money-bill-alt"></i></div>
+              <h4 class="text-uppercase mb-3">Foreign exchange</h4>
+              <p class="text-gray-600 text-sm">Promote exports and increase foreign exchange earnings.Enhance the production of local substitutes for imported goods thereby conserving scarce foreign exchange.</p>
+            </div>
+            <!-- Service-->
+            <div class="col-lg-4 col-md-6 block-icon-hover text-center">
+              <div class="icon icon-outlined icon-outlined-primary icon-thin mx-auto mb-3"><i class="fas fa-briefcase"></i></div>
+              <h4 class="text-uppercase mb-3">Employment</h4>
+              <p class="text-gray-600 text-sm">Create massive employment particularly for the youth in rural and peri-urban communities, and thereby improve income levels and standards of living, as well as reduce rural-urban migration.</p>
+            </div>
+            <!-- Service-->
+            <div class="col-lg-4 col-md-6 block-icon-hover text-center">
+              <div class="icon icon-outlined icon-outlined-primary icon-thin mx-auto mb-3"><i class="fas fa-bus"></i></div>
+              <h4 class="text-uppercase mb-3">Reduce Rural Urban Migration</h4>
+              <p class="text-gray-600 text-sm">Add value to the natural resources of each district and exploit the economic potential of each district based on its comparative advantage.
+                Ensure even and spatial spread of industries that would stimulate economic activity in different parts of the country.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-5 bg-pentagon border-top border-bottom border-gray-600">
+        <div class="container py-4">
+          <!-- Counters-->
+          <div class="row gy-4 text-center" id="counterUp">
+            <div class="col-lg-3 col-sm-6">
+              <div class="text-center text-gray-700">
+                <div class="icon-outlined border-gray-600 icon-sm mx-auto mb-3 icon-thin"><i class="fas fa-landmark"></i></div>
+                <h4 class="h1 counter mb-3" data-counter="580">{{districts}}</h4>
+                <p class="text-uppercase fw-bold mb-0">Districts</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <div class="text-center text-gray-700">
+                <div class="icon-outlined border-gray-600 icon-sm mx-auto mb-3 icon-thin"><i class="fas fa-industry"></i></div>
+                <h4 class="h1 counter mb-3" data-counter="100">{{completed}}</h4>
+                <p class="text-uppercase fw-bold mb-0">Completed Factories</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <div class="text-center text-gray-700">
+                <div class="icon-outlined border-gray-600 icon-sm mx-auto mb-3 icon-thin"><i class="fas fa-hourglass-half"></i></div>
+                <h4 class="h1 counter mb-3" data-counter="320">{{brown}}</h4>
+                <p class="text-uppercase fw-bold mb-0">Brown Fields</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <div class="text-center text-gray-700">
+                <div class="icon-outlined border-gray-600 icon-sm mx-auto mb-3 icon-thin"><i class="fas fa-calendar-check"></i></div>
+                <h4 class="h1 counter mb-3" data-counter="923">{{districts_left}}</h4>
+                <p class="text-uppercase fw-bold mb-0">Green Fields</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {%if factories%}
+      <section class="py-5">
+        <div class="container py-4">
+          <header class="mb-5">
+            <h2 class="lined lined-center text-uppercase mb-4">Recently Launched</h2>
+            <p class="lead">Check out some of the recently launched factories.</a></p>
+          </header>
+          <div class="row gy-5">
+            <!-- blog box-->
+            {%for factory in factories%}
+            <div class="col-lg-3 col-md-6">
+              <div class="box-image">
+                <div class="mb-4 primary-overlay"><img class="img-fluid" src="{{factory.image.url}}" alt="...">
+                  <div class="overlay-content d-flex flex-column justify-content-center p-4">
+                    <ul class="list-inline mb-0 box-image-content text-center">
+                      <li class="list-inline-item"><a class="btn btn-outline-light" href="{%url 'details' factory.pk%}"> <i class="fas fa-link me-2"></i>Read more</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="text-center">                   
+                  <h3 class="h4 text-uppercase text-primary"> <a class="text-reset" href="{%url 'details' factory.pk%}">{{factory.name}}</a></h3>
+                  <p class="small text-uppercase text-muted">{{factory.district}}</p>
+                  <p class="text-gray-600 text-sm text-start">{{factory.about}}</p><a class="btn btn-outline-primary" href="{%url 'details' factory.pk%}">View</a>
+                </div>
+              </div>
+            </div>
+            {%endfor%}
+
+          </div>
+        </div>
+      </section>
+      {%endif%}
+      
+      
+      {%endblock%}

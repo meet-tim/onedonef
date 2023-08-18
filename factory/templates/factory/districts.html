@@ -1,0 +1,104 @@
+{%extends 'factory/base.html'%}
+{%load static%}
+{%block home%}active{%endblock%} 
+{%block content%}
+
+            <!-- HEADING BREADCRUMB-->
+      <section class="bg-pentagon py-4">
+        <div class="container py-3">
+          <div class="row d-flex align-items-center gy-4">
+            <div class="col-md-7">
+              {%if query%}
+              <h1 class="h2 mb-0 text-uppercase">{{query}}</h1>
+              {%else%}
+              <h1 class="h2 mb-0 text-uppercase">All Districts</h1>
+              {%endif%}
+            </div>
+            <div class="col-md-5">
+              <!-- Breadcrumb-->
+              <ol class="text-sm justify-content-start justify-content-lg-end mb-0 breadcrumb undefined">
+                <li class="breadcrumb-item"><a class="text-uppercase" href="{%url 'index' %}">Home</a></li>
+                <li class="breadcrumb-item text-uppercase active">Districts</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- BLOG LISTING SMALL LISTING-->
+      <section class="py-5">
+        <div class="container py-4">
+          <div class="row gy-5">
+            <div class="col-lg-9">
+                <p class="text-muted lead mb-5">Track the current progress of the 1D1F initiative. Below are all the districts in Ghana and their corresponding factories.</p>
+                <!-- ORDERS TABLE-->
+                <div class="table-responsive">
+                  <table class="table table-hover text-nowrap">
+                    <thead>
+                      <tr class="text-sm">
+                        <th class="border-gray-300 border-top py-3">District</th>
+                        <th class="border-gray-300 border-top py-3">Region</th>
+                        <th class="border-gray-300 border-top py-3">Factory</th>
+                        <th class="border-gray-300 border-top py-3">Factory Status</th>
+                        <th class="border-gray-300 border-top py-3">View</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {%for district in districts%}
+                      <tr class="text-sm">
+                        <th class="align-middle py-3">{{district.name}}</th>
+                        <td class="align-middle py-3">{{district.region}}</td>
+                        {%if district.factory%}
+                          <td class="align-middle py-3">{{district.factory.name}}</td>
+                          {%if district.factory.condition == 'Green'%}
+                          <td class="align-middle py-3"><span class="badge fw-light text-uppercase bg-success">{{district.factory.condition}}</span></td>
+                          {%endif%}
+                          {%if district.factory.condition == 'Brown'%}
+                          <td class="align-middle py-3"><span class="badge fw-light text-uppercase bg-warning">{{district.factory.condition}}</span></td>
+                          {%endif%}
+                          {%if district.factory.condition == 'Completed'%}
+                          <td class="align-middle py-3"><span class="badge fw-light text-uppercase bg-info">{{district.factory.condition}}</span></td>
+                          {%endif%}
+                          <td class="align-middle py-3"><a class="btn btn-outline-primary btn-sm" href="{%url 'details' district.factory.pk %}">View</a></td>
+                        {%else%}
+                        <td class="align-middle py-3">No factory built</td>
+                        <td class="align-middle py-3"><span class="badge fw-light text-uppercase bg-success">Green</span></td>
+                        <td class="align-middle py-3"><a class="btn btn-secondary disbladed btn-sm" >View</a></td>
+                        {%endif%}
+                      </tr>
+                      {%endfor%}
+                 
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            <div class="col-lg-3">
+              <div class="mb-4">
+                <h3 class="h4 lined text-uppercase mb-4">Info</h3>
+                <p class="text-sm mb-0">There are three representations for a factory's condition. Green means yet to be built ,Brown means abandoned or not in use and completed are ccommpleted and in use factories.</p>
+              </div>
+              <div class="mb-4">   
+                <h3 class="h4 lined text-uppercase mb-4">Search</h3>
+                <form action="{%url 'search'%}"  role="search">
+                  <div class="input-group mb-3">
+                    <input class="form-control" name='q' type="search" placeholder="Search factories" aria-label="search">
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                  </div>
+                </form>
+              </div>
+              <div class="mb-4">   
+                <h3 class="h4 lined text-uppercase mb-4">Categories</h3>
+                <nav class="nav flex-column nav-pills">
+                  <a class="nav-link text-sm" href="{%url 'filter' 'green'%}">Green Fields</a>
+                  <a class="nav-link text-sm " href="{%url 'filter' 'brown'%}">Brown Fields</a>
+                  <a class="nav-link text-sm" href="{%url 'filter' 'completed'%}">Completed</a>
+                    <a class="nav-link text-sm" href="{%url 'filter' 'agric'%}">Agric</a>
+                </nav>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      {%endblock%}
